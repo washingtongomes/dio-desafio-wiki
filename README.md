@@ -5,6 +5,7 @@
 #  Tecnologias
     > HTML 
     > css
+    > Styled-Components
     > Git & GitHub
     > JavaScript
 

@@ -12,10 +12,10 @@ function App() {
   const [removeRepo, setRemoveRepo] = useState([]);
 
   const handleSearchRepo = async () => {
-    const {data} = await api.get(`repos/${currentRepo}`)
-    if(data.id){
+    const { data } = await api.get(`repos/${currentRepo}`)
+    if (data.id) {
       const isExist = repos.find(repo => repo.id === data.id);
-      if(!isExist){
+      if (!isExist) {
         setRepos(prev => [...prev, data]);
         setCurrentRepo('')
         return
@@ -25,20 +25,25 @@ function App() {
   }
 
   const handleRemoveRepo = (id) => {
-    console.log('Removendo registro', id);
-    const removeID = removeRepo.filter(repo => repo.id === "id");
-    removeID.remove();
-    setRemoveRepo('')
-    return    
+    console.log('Removendo id', id)
+
+    const remove = repos.filter(remid => remid.id === repos.id)
+
+    if (remove) {
+      setRepos([]);
+    }
   }
+
+
+
 
 
   return (
     <Container>
-      <img src={gitLogo} width={72} height={72} alt="github logo"/>
+      <img src={gitLogo} width={72} height={72} alt="github logo" />
       <Input value={currentRepo} onChange={(e) => setCurrentRepo(e.target.value)} />
-      <Button onClick={handleSearchRepo}/>
-      {repos.map(repo => <ItemRepo handleRemoveRepo={handleRemoveRepo} repo={repo}/>)}
+      <Button onClick={handleSearchRepo} />
+      {repos.map(repo => <ItemRepo handleRemoveRepo={handleRemoveRepo} repo={repo} />)}
     </Container>
   );
 }
