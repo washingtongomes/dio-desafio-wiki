@@ -9,7 +9,6 @@ import { Container } from './styles';
 function App() {
   const [currentRepo, setCurrentRepo] = useState('');
   const [repos, setRepos] = useState([]);
-  const [removeRepo, setRemoveRepo] = useState([]);
 
   const handleSearchRepo = async () => {
     const { data } = await api.get(`repos/${currentRepo}`)
